@@ -1,0 +1,45 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <title>疾情報</title>
+    <script src="{% static 'third_party/scripts/jquery.min.js' %}"></script>
+    <script src="{% static 'third_party/scripts/bootstrap.min.js' %}"></script>
+    <script src="{% static 'third_party/scripts/sweetalert2.js' %}"></script>
+    <script src="{% static 'third_party/scripts/toast.min.js' %}"></script>
+    <script src="{% static 'third_party/scripts/csrf.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'third_party/styles/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'third_party/styles/sweetalert2.css' %}"/>
+    <link rel="stylesheet" href="{% static 'third_party/styles/toast.min.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC"/>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+          integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+
+<div class="topnav">
+    {% if user.is_authenticated %}
+        <a class="active" href="{% url 'snapnews:snapnews_index' %}">首頁</a>
+        <a href="{% url 'myaccount:myaccount_keyword' %}">監控設定</a>
+        <a href="{% url 'myaccount:myaccount_profile_update' %}">個人資料維護</a>
+
+        <a class="logout" href="{% url 'account_logout' %}">登出</a>
+    {% endif %}
+</div>
+{% block content %}
+{% endblock %}
+
+
+
+{% block modal %}
+
+{% endblock %}
+</body>
+
+</html>

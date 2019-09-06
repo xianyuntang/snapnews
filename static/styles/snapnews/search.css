@@ -1,0 +1,57 @@
+﻿
+#select_channel {
+    position: fixed;
+    top: 10%;
+    width: 20%;
+}
+
+#select_channel .channel_label {
+    text-align: center;
+    background-color: #17181c;
+    box-shadow: 2px 2px 5px #000;: h
+}
+
+#select_channel .channel_label:hover {
+    background-color: #ffffff;
+}
+
+#result {
+    overflow: auto;
+    display: block;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 75%;
+    height: 80vh;
+}
+
+table {
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+tr {
+    text-align: left;
+}
+
+.modal-lg {
+    max-width: 55vw;
+    width: 55vw;
+}
+
+.modal-title {
+    color: black;
+}
+
+.modal-body {
+    font-size: 18px;
+    color: black;
+    margin: auto;
+}
+
+.preloading-modal-body {
+    width: 100%;
+    text-align: center;
+}
+

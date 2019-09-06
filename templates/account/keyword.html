@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'styles/myaccount/keyword.css' %}">
+    <script src="{% static 'scripts/myaccount/keyword.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="window">
+        <div>
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <label for="keyword_list" class="form-control">關鍵字清單</label>
+
+                    {{ form.keyword_list }}
+                </div>
+
+                <br>
+                <div>
+                    <input type="submit" class="btn btn-primary" value="更新"/>     
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}

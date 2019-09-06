@@ -1,0 +1,38 @@
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #17181c;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: white;
+}
+.topnav{
+    z-index: 100;
+   position: fixed;
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+
+.topnav a{
+    float: left;
+    color: #6f42c1;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover{
+    background-color: #999999;
+    color: black;
+}
+
+.topnav .logout{
+    float:right;
+}
+
+.container{
+    margin-top: 20px;
+    text-align: center;
+}

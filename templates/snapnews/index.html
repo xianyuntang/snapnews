@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <script src="{% static 'third_party/scripts/datepicker.min.js' %}"></script>
+    <script src="{% static 'third_party/scripts/datepicker.zh.js' %}"></script>
+    <script src="{% static 'third_party/scripts/jqcloud.js' %}"></script>
+    <script src="{% static 'scripts/snapnews/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'third_party/styles/jqcloud.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/snapnews/index.css' %}"/>
+    <link rel="stylesheet" href="{% static 'third_party/styles/datepicker.min.css' %}"/>
+{% endblock %}
+{% block content %}
+    <div class="window">
+        <div class="slideshow-container">
+            <div class="wordcloud-container">
+                <div class="wordcloud" id="wordcloud_today"></div>
+                <div class="wordcloud" id="wordcloud_all"></div>
+            </div>
+
+
+            <a class="prev" onclick="moveToLeft();" style="color:#adadad">&#10094;</a>
+            <a class="next" onclick="moveToRight();" style="color:#adadad">&#10095;</a>
+        </div>
+
+        <div class="main">
+            <form action="{% url 'snapnews:snapnews_search' %}" method="get">
+            <label for="keyword"></label>
+            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="關鍵字" autocomplete="off">
+            <br/>
+            <div class="form-inline">
+                <input name="start" id="start" class="form-control" autocomplete="off" placeholder="開始時間">
+                <label for="start"></label>
+                <img src="{% static 'images/calendar.png' %}" height="25" width="25" alt="日曆"/>
+                <input name="end" id="end" class="form-control" autocomplete="off" placeholder="結束時間">
+                <label for="end"></label>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-dark">送出</button>
+
+        </form>
+
+        </div>
+
+    </div>
+{% endblock %}

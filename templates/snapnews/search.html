@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+    <script src="{% static 'scripts/snapnews/search.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'styles/snapnews/search.css' %}"/>
+
+
+{% endblock %}
+{% block content %}
+    <div id="select_channel">
+        {% for channel in channels %}
+            <label class="form-control channel_label" id="channel_{{ forloop.counter }}">{{ channel }}</label>
+        {% endfor %}
+    </div>
+    <div id="result">
+        <table id="result_table">
+
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block modal %}
+    <!-- Modal -->
+    <div class="modal fade" id="zoom-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="zoom-in-modal-label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="zoom-in-modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="preloading-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="preloading-modal-body">
+                        <img src="{% static 'images/Preloader.gif' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+.window{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;.
+
+}
+
+.keyword-area {
+    width: 800px;
+    height: 80vh !important;
+}

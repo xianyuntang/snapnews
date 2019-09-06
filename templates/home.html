@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+
+{% endblock %}
+{% block content %}
+    <div class="window">
+    <h1>登入</h1>
+    {% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>
+        <p><a href="{% url 'account_logout' %}">Log out</a>
+            {% else %}
+        <p><a href="{% provider_login_url 'google' %}">google</a></p>
+    {% endif %}
+{% endblock %}
+</div>

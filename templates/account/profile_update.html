@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles/myaccount/profile.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="window">
+    <div class="form-wrapper">
+         
+        <form method="post" action="" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 {% for field in form %}
+                     
+            <div class="field-wrapper">
+                       {{ field.errors }}
+                       {{ field.label_tag }} {{ field }}
+                       {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                       {% endif %}
+                         
+            </div>
+                   {% endfor %}
+                 
+            <div class="button-wrapper submit">
+                        <input class="btn btn-primary" type="submit" value="更新"/>
+                     
+            </div>
+             
+        </form>
+    </div>
+
+
+{% endblock %}
+</div>

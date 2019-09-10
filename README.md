@@ -27,7 +27,7 @@ $ docker run -itd -p 80:80 --restart=always xt1800i/snapnews
 
 ### Step 1: open docker bash 
 ````
-$ docker exec -it 'docker container name' bash
+$ docker exec -it 'your docker container name' bash
 ````
 
 ### Step 2: edit /app/SnapNewsWeb/settings.py to your database*
@@ -49,7 +49,10 @@ DATABASES = {
 # python3 manager.py makemigrations
 # python3 manager.py migrate
 ````
-
+### Step 4: restart container 
+````
+$ docker restart 'your docker container name'
+````
 ## note
 1. make sure the image directory '/media/storage/images' exists 
 

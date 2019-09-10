@@ -1,5 +1,5 @@
 # Demo
-
+![image](https://github.com/xianyuntang/snapnews/blob/master/demo/1568101923597.jpg)
 ![image](https://github.com/xianyuntang/snapnews/blob/master/demo/1567759244991.jpg)
 
 # Download

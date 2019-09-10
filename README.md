@@ -20,7 +20,7 @@ $ docker pull xt1800i/snapnews
 
 ### Step 3: run docker container
 ````
-$ docker run -itd -p 80:80 --restart=always xt1800i/snapnews
+$ docker run -itd -p 80:80 -v /media/storage/images:/media/storage/images --restart=always  xt1800i/snapnews
 ````
 
 ## If you want to create a new database 

@@ -31,11 +31,11 @@ $ docker exec -it 'your docker container name' bash
 ````
 
 ### Step 2: edit /app/SnapNewsWeb/settings.py to your database*
-
+Only mysql was recommended. **DO NOT USE OTHER DATABASE** 
 ````
 DATABASES = {
     'default': {
-        'ENGINE': 'database engine',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'database',
         'USER': 'user',
         'PASSWORD': 'password',

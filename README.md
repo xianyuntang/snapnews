@@ -31,8 +31,8 @@ $ docker run -itd -p 80:80 -v /media/storage/images:/media/storage/images --rest
 $ docker exec -it 'your docker container name' bash
 ````
 
-### Step 2: edit /app/SnapNewsWeb/settings.py to your database*
-Only mysql was recommended. **DO NOT USE OTHER DATABASE** 
+### Step 2: edit /app/SnapNewsWeb/settings.py to your database
+Only Support MYSQL/MARIADB **DO NOT USE OTHER DATABASE** 
 ````
 DATABASES = {
     'default': {

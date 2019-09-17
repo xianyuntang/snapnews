@@ -38,9 +38,9 @@ def load_snapshot(request):
         channel = request.GET.get('channel')
         keyword = request.GET.get('keyword')
         start = request.GET.get('start')
-        start = dateparse.parse_datetime('{} 21:00:00'.format(start)) - datetime.timedelta(days=1)
+        start = dateparse.parse_datetime('{}T21:00:00Z'.format(start)) - datetime.timedelta(days=1)
         end = request.GET.get('end')
-        end = dateparse.parse_datetime('{} 21:00:00'.format(end))
+        end = dateparse.parse_datetime('{}T21:00:00Z'.format(end))
         page_num = int(request.GET.get('page_num'))
         __image_per_page = 10
         page_slices = (page_num * __image_per_page, (page_num + 1) * __image_per_page)

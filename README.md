@@ -8,7 +8,7 @@
 $ docker pull xt1800i/snapnews-web
 ````
 
-# Deploying Steps 
+# Deployment
 
 ### Step 1: install docker
 Please refer to  [this link](https://www.linode.com/docs/applications/containers/install-docker-ce-ubuntu-1804/)

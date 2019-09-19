@@ -26,14 +26,14 @@ def search(request):
 
         keyword = request.GET.get('keyword')
         start = request.GET.get('start')
-        start = dateparse.parse_datetime('{}T21:00:00Z'.format(start)) - datetime.timedelta(days=1)
+        start = dateparse.parse_datetime('{} 13:00:00'.format(start)) - datetime.timedelta(days=1)
         end = request.GET.get('end')
-        end = dateparse.parse_datetime('{}T21:00:00Z'.format(end))
+        end = dateparse.parse_datetime('{} 13:00:00'.format(end))
         channel_object = Channel.objects.values_list('name', flat=True)
         channel = []
         for i in range(len(channel_object)):
             record_object = Record.objects.filter(time__range=(start, end), keyword=keyword,
-                                                  channel=channel_object[i])
+                                                  channel=channel_object[i],user=request.user)
             if len(record_object) != 0:
                 channel.append(channel_object[i])
         response = render(request, 'snapnews/search.html', context={'channels': channel})

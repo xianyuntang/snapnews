@@ -36,9 +36,9 @@ $.ajax({
     success: function (result) {
         let words = [];
         let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth() + 1;
-        let yyyy = today.getFullYear();
+        let dd = today.getUTCDate();
+        let mm = today.getUTCMonth() + 1;
+        let yyyy = today.getUTCFullYear();
 
         if (dd < 10) {
             dd = '0' + dd;

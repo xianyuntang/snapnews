@@ -19,19 +19,20 @@ $ docker pull xt1800i/snapnews-web
 ````
 
 ### Step 3: run docker container
-*make sure docker volume is mounted*
+make sure docker volume is mounted
 ````
 $ docker run -itd -p 80:80 -v /media/storage/images:/media/storage/images --restart=always  xt1800i/snapnews-web
 ````
 
-## If you want to create a new database 
+### Step 4: modify database setting (optional)
 
-### Step 1: open docker bash 
+get into docker bash
 ````
 $ docker exec -it 'your docker container name' bash
 ````
 
-### Step 2: edit /app/SnapNewsWeb/settings.py to your database
+edit /app/SnapNewsWeb/settings.py
+
 Only Support MYSQL/MARIADB **DO NOT USE OTHER DATABASE** 
 ````
 DATABASES = {
@@ -45,15 +46,15 @@ DATABASES = {
     }
 }
 ````
-### Step 3: migrate database 
+migrate database 
 ````
 # python3 manager.py makemigrations
 # python3 manager.py migrate
 ````
-### Step 4: restart container 
+restart container 
 ````
 $ docker restart 'your docker container name'
 ````
-## note
+# note
 1. make sure the image directory '/media/storage/images' exists 
 

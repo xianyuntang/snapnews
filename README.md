@@ -21,7 +21,7 @@ $ docker pull xt1800i/snapnews-web
 ### Step 3: run docker container
 *make sure docker volume is mounted*
 ````
-$ docker run -itd -p 80:80 -v /media/storage/images:/media/storage/images --restart=always  xt1800i/snapnews
+$ docker run -itd -p 80:80 -v /media/storage/images:/media/storage/images --restart=always  xt1800i/snapnews-web
 ````
 
 ## If you want to create a new database 

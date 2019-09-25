@@ -1,6 +1,5 @@
 from django.utils import dateparse
 from django.http import JsonResponse, Http404
-from django.core import serializers
 from snapnews.models import Record
 from snapnews.utils import channel_to_str
 from snapnews.utils import load_and_encode_image

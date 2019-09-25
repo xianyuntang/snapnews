@@ -7,7 +7,7 @@
 {% block content %}
     <div class="window">
         <div>
-            <form method="post" action="" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data" id="keyword_form">
                 {% csrf_token %}
                 <div>
                     <label for="keyword_list" class="form-control">關鍵字清單</label>
@@ -17,7 +17,7 @@
 
                 <br>
                 <div>
-                    <input type="submit" class="btn btn-primary" value="更新"/>     
+                    <input type="button" onclick="submit_form()" class="btn btn-primary" value="更新"/>     
                 </div>
             </form>
 

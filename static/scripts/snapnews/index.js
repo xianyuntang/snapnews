@@ -101,34 +101,7 @@ $.ajax({
     }
 });
 
-// $(document).ready(function getBreakingNews() {
-//     $.ajax({
-//         type: "GET",
-//         url: "/snapnews/GET/breaking_news/",
-//         success: function (result) {
-//             $.each(result, function (key, value) {
-//                 $.toast({
-//                     heading: value.keyword,
-//                     text: value.time + "<br><img src=\"" + value.image + "\" height=\"180\" width=\"360\">",
-//                     position: 'bottom-right',
-//                     hideAfter: 60000,
-//                     stack: 3,
-//                     loader: true,        // Change it to false to disable loader
-//                     loaderBg: '#9EC600'  // To change the background
-//                 });
-//             });
-//
-//
-//         },
-//         complete: function () {
-//
-//             //setTimeout(getBreakingNews, 2000);
-//
-//
-//         }
-//
-//     });
-// });
+
 
 // 向左向右文字雲
 function moveToLeft() {

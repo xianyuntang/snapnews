@@ -1,6 +1,6 @@
-
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, reverse
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from ..forms import ProfileForm, KeywordForm
 from ..models import UserProfile, UserKeyword
 
@@ -9,7 +9,7 @@ from ..models import UserProfile, UserKeyword
 
 
 @login_required
-def profile_update(request):
+def profile(request):
     user = request.user
     user_profile = get_object_or_404(UserProfile, user=user)
 
@@ -25,17 +25,18 @@ def profile_update(request):
             user_profile.telephone = form.cleaned_data['telephone']
             user_profile.save()
 
-            return render(request, 'account/profile_update.html', {'form': form, 'user': user})
+            return render(request, 'account/profile.html', {'form': form, 'user': user})
     else:
         default_data = {'first_name': user.first_name, 'last_name': user.last_name,
                         'org': user_profile.org, 'telephone': user_profile.telephone,
                         'email_address': user_profile.email_address, 'line_api_key': user_profile.line_api_key}
         form = ProfileForm(default_data)
 
-        return render(request, 'account/profile_update.html', {'form': form, 'user': user})
+        return render(request, 'account/profile.html', {'form': form, 'user': user})
 
 
 @login_required
+@transaction.atomic
 def keyword(request):
     user = request.user
     user_keyword = UserKeyword.objects.filter(user=user).order_by('id')

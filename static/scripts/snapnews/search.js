@@ -41,11 +41,10 @@ function getData(channel, init) {
         type: "GET",
         url: "/snapnews/GET/load_snapshot?" + para,
         success: function (response) {
-            if (response.length === 0) {
-                $("#preloading-modal").modal('hide');
-                console.log('test');
-                return
-            }
+            // if (response.length === 0) {
+            //     $("#preloading-modal").modal('hide');
+            //     return
+            // }
             $.each(response, function (key, value) {
                 div.innerHTML += "<img src=\"" + value.image + "\" height=\"180\" width=\"360\" onclick=\"trigger_modal(" + value.id + ")\">";
 
@@ -55,9 +54,9 @@ function getData(channel, init) {
 
                 getData(channel, false)
             }
-            else {
-                $("#preloading-modal").modal('hide');
-            }
+            // else {
+            //     $("#preloading-modal").modal('hide');
+            // }
 
 
         }
@@ -77,8 +76,8 @@ $(document).ready(function () {
             if (is_loading === false) {
                 is_loading = true;
                 getData(channel, false)
-            }
 
+            }
         }
     })
 });

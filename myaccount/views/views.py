@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from ..forms import ProfileForm, KeywordForm
 from ..models import UserProfile, UserKeyword
+import requests
+import json
 
 
 # Create your views here.
@@ -55,3 +57,27 @@ def keyword(request):
         default_data = {'keyword_list': '\n'.join(keyword_list)}
         form = KeywordForm(default_data)
     return render(request, 'account/keyword.html', {'user': user, 'form': form})
+
+
+@login_required
+def update_line_api_key(request):
+    if request.method == 'GET':
+        user = request.user
+        user_profile = UserProfile.objects.filter(user=user).first()
+        params = {
+            'grant_type': 'authorization_code',
+            'redirect_uri': 'http://snapnews.cdc.gov.tw/account/profile/update_line_api_key/',
+            'client_id': 'xBhzCgHqqkrUmxffRZvgsi',
+            'client_secret': 'YfUqRIbpiGbp8fsiXBHZQKHoibmV5sirfVDl3s11q71',
+            'code': request.GET['code']
+        }
+        r = requests.post('https://notify-bot.line.me/oauth/token', params=params)
+        r = json.loads(r.content)
+        user_profile.line_api_key = r['access_token']
+        user_profile.save()
+        default_data = {'first_name': user.first_name, 'last_name': user.last_name,
+                        'org': user_profile.org, 'telephone': user_profile.telephone,
+                        'email_address': user_profile.email_address, 'line_api_key': user_profile.line_api_key}
+        form = ProfileForm(default_data)
+
+        return render(request, 'account/profile.html', {'form': form, 'user': user})

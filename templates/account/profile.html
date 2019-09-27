@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'styles/myaccount/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/myaccount/profile.css' %}">
+    <script src="{% static 'scripts/myaccount/line_oauth.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="window">
@@ -20,9 +21,10 @@
                          
             </div>
                    {% endfor %}
-                 
+
             <div class="button-wrapper submit">
-                        <input class="btn btn-primary" type="submit" value="更新"/>
+                <input class="btn btn-primary" type="button" value="綁定Line通知" onclick="get_line_api_key()"/>
+                        <input class="btn btn-primary" type="submit" value="更新個人資料"/>
                      
             </div>
              

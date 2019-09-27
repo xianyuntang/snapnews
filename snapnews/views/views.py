@@ -5,6 +5,7 @@ from snapnews.models import Record
 from setting.models import Channel
 from django.contrib.auth.decorators import login_required
 import datetime
+import pytz
 
 
 # Create your templates here.
@@ -26,14 +27,20 @@ def search(request):
 
         keyword = request.GET.get('keyword')
         start = request.GET.get('start')
-        start = dateparse.parse_datetime('{} 21:00:00'.format(start)) - datetime.timedelta(days=1)
         end = request.GET.get('end')
-        end = dateparse.parse_datetime('{} 21:00:00'.format(end))
+        try:
+            start = dateparse.parse_datetime('{} 13:00:00'.format(start)) - datetime.timedelta(days=1)
+
+            end = dateparse.parse_datetime('{} 13:00:00'.format(end))
+        except:
+            return render(request, 'snapnews/index.html')
         channel_object = Channel.objects.values_list('name', flat=True)
         channel = []
+        print(start, end)
         for i in range(len(channel_object)):
             record_object = Record.objects.filter(time__range=(start, end), keyword=keyword,
-                                                  channel=channel_object[i],user=request.user)
+                                                  channel=channel_object[i])
+
             if len(record_object) != 0:
                 channel.append(channel_object[i])
         response = render(request, 'snapnews/search.html', context={'channels': channel})

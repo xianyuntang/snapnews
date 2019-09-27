@@ -139,6 +139,6 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-SITE_ID = 5
+SITE_ID = 4
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/snapnews/index/'

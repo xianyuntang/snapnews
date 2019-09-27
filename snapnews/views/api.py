@@ -29,14 +29,12 @@ def get_generate_word_cloud(request):
 
 def get_generate_word_cloud_today_only(request):
     if request.method == 'GET':
-        start = datetime.datetime.today().date()
-        start = dateparse.parse_datetime('{} 21:00:00'.format(start)) - datetime.timedelta(days=1)
-        print(start)
+        start = dateparse.parse_datetime('{} 13:00:00'.format(datetime.datetime.today().date())) - datetime.timedelta(
+            days=1)
         end = datetime.datetime.now()
         interested_keyword = UserKeyword.objects.filter(user=request.user).values_list('keyword', flat=True)
         keyword_detected = []
-        all_record = Record.objects.filter(time__range=(start, end)).values_list('keyword',flat=True)
-
+        all_record = Record.objects.filter(time__range=(start, end)).values_list('keyword', flat=True)
 
         for k in all_record:
             if k in interested_keyword:
@@ -53,9 +51,11 @@ def load_snapshot(request):
         channel = request.GET.get('channel')
         keyword = request.GET.get('keyword')
         start = request.GET.get('start')
-        start = dateparse.parse_datetime('{} 21:00:00'.format(start)) - datetime.timedelta(days=1)
+        # start = dateparse.parse_datetime('{}'.format(start)) - datetime.timedelta(days=1)
+        start = dateparse.parse_datetime('{} 13:00:00'.format(start)) - datetime.timedelta(days=1)
         end = request.GET.get('end')
-        end = dateparse.parse_datetime('{} 21:00:00'.format(end))
+        # end = dateparse.parse_datetime('{}'.format(end))
+        end = dateparse.parse_datetime('{} 13:00:00'.format(end))
         page_num = int(request.GET.get('page_num'))
         __image_per_page = 10
         page_slices = (page_num * __image_per_page, (page_num + 1) * __image_per_page)
